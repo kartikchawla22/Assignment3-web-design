@@ -7,6 +7,7 @@ import CalculatorPage from './pages/CalculatorPage';
 import WeatherPage from './pages/WeatherPage';
 import NewsFeedPage from './pages/NewsFeedPage';
 import CurrencyConverterPage from './pages/CurrencyConverterPage';
+import ToDoListPage from './pages/ToDoListPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/tools/calculator" element={<CalculatorPage />} />
+            <Route path="/tools/todolist" element={<ToDoListPage />} />
             <Route path="/services/weather" element={<WeatherPage />} />
             <Route path="/services/newsfeed" element={<NewsFeedPage />} />
             <Route path="/services/currency" element={<CurrencyConverterPage />} />

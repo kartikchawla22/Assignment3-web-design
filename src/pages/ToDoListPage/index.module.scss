@@ -1,0 +1,23 @@
+.heading {
+    text-align: center;
+}
+
+.toDoListContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .toDoListContent {
+        max-width: 50%;
+        width: 100%;
+
+        .addTaskBox {
+            display: inline-flex;
+            justify-content: center;
+            width: 100%;
+            margin: 10px 0
+        }
+    }
+
+}

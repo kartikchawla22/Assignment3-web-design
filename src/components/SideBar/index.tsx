@@ -24,7 +24,7 @@ const sideBarData = [
             },
             {
                 pageName: "To Do List",
-                pageLink: "/todolists"
+                pageLink: "/todolist"
             }
         ]
     },
