@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import HomePage from './pages/Home';
 import styles from './index.module.scss'
 import CalculatorPage from './pages/CalculatorPage';
+import WeatherPage from './pages/WeatherPage';
+import NewsFeedPage from './pages/NewsFeedPage';
+import CurrencyConverterPage from './pages/CurrencyConverterPage';
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/tools/calculator" element={<CalculatorPage />} />
+            <Route path="/services/weather" element={<WeatherPage />} />
+            <Route path="/services/newsfeed" element={<NewsFeedPage />} />
+            <Route path="/services/currency" element={<CurrencyConverterPage />} />
           </Routes>
         </div>
       </div>

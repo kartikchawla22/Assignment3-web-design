@@ -1,0 +1,31 @@
+.weatherSlider {
+    color: #1976d2 !important;
+    min-width: 200px;
+}
+
+.weatherContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 20px;
+
+
+    .weatherInfo {
+        align-items: center;
+        display: flex;
+    }
+
+    .weatherData {
+        display: flex;
+        flex-direction: column;
+
+        span {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .value {
+        margin-left: 10px;
+    }
+}

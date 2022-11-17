@@ -1,0 +1,27 @@
+.currencyConverterContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 20px;
+
+    .currencyConverterContent {
+        display: flex;
+        flex-direction: column;
+
+        .dropdownContainer {
+            display: inline-flex;
+            margin: 5px;
+            justify-content: flex-end;
+
+            span {
+                margin-right: 10px;
+            }
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
+}

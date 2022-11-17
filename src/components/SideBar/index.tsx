@@ -39,6 +39,10 @@ const sideBarData = [
             {
                 pageName: "Currency",
                 pageLink: "/currency"
+            },
+            {
+                pageName: "News Feed",
+                pageLink: "/newsfeed"
             }
         ]
     }

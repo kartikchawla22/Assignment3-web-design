@@ -1,0 +1,28 @@
+.newsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.author {
+    text-align: end;
+}
+
+.articleImage {
+    text-align: center;
+
+    img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+
+.title {
+    text-align: center;
+    font-size: 25px;
+}
