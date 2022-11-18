@@ -14,7 +14,7 @@ const schema = Yup.object().shape({
     .email("Invalid email format"),
   pass: Yup.string()
     .required("Password is a required field")
-    .min(5, "Password must be at least 8 characters"),
+    .min(6, "Password must be at least 6 characters"),
 });
 
 const LoginPage = () => {
@@ -35,7 +35,6 @@ const LoginPage = () => {
               .then(async (res) => {
               })
               .catch((err: FirebaseError) => {
-                console.log(err.message, err.code);
                 switch (err.code) {
                   case "auth/wrong-password":
                     setAPIError("Email OR Password is wrong")

@@ -18,16 +18,15 @@ const schema = Yup.object().shape({
     .email("Invalid email format"),
   pass: Yup.string()
     .required("Password is a required field")
-    .min(8, "Password must be at least 8 characters"),
+    .min(6, "Password must be at least 6 characters"),
 });
 
 
 const SignupPage = () => {
   const auth = getAuth();
-
   const db = getFirestore(firebaseConfig.app);
-
   const [APIError, setAPIError] = useState<string>("")
+
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
@@ -42,8 +41,6 @@ const SignupPage = () => {
             createUserWithEmailAndPassword(auth, values.email, values.pass)
               .then(async (res) => {
                 const user = res.user;
-                console.log(res.user);
-
                 await updateProfile(user, {
                   displayName: values.name,
                 });
@@ -52,13 +49,11 @@ const SignupPage = () => {
                     name: values.name,
                     email: values.email
                   });
-                  console.log("Document written with ID: ", docRef.id);
                 } catch (e) {
                   console.error("Error adding document: ", e);
                 }
               })
               .catch((err: FirebaseError) => {
-                console.log(err.message, err.code);
                 switch (err.code) {
                   case "auth/wrong-password":
                     setAPIError("Email OR Password is wrong")

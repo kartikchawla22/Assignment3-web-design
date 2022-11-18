@@ -56,7 +56,6 @@ const SideBar = () => {
     const [openMenu, setOpenMenu] = useState<{ [key: string]: boolean }>({})
 
     const handleClick = (key: string) => () => {
-        console.log(key);
         setOpenMenu({ [key]: !openMenu[key] });
     };
     return (

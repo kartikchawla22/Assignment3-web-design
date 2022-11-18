@@ -13,14 +13,12 @@ const CurrencyConverter = () => {
         setIsloading(true)
         const getExchangeRates = async () => {
             const data = await axios.get(`https://v6.exchangerate-api.com/v6/3d83131519ed1611512aeecd/latest/USD`)
-            console.log(data.data);
             setIsloading(false)
             setExchangeRateData(data.data["conversion_rates"]);
         }
         getExchangeRates()
     }, [])
     useEffect(() => {
-        console.log(fromCurrency, toCurrency)
         if (fromCurrency > 0.0 && toCurrency > 0.0) {
             setResult(fromCurrency / toCurrency)
         }

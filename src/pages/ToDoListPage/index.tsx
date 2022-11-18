@@ -22,7 +22,6 @@ const ToDoListPage = () => {
     }, [tasks])
     useEffect(() => {
         const savedTasks: Array<ToDoListItemType> = JSON.parse(localStorage.getItem("tasks") as any)
-        console.log(savedTasks);
         setTasks(savedTasks)
     }, [])
     const onTaskChange = (isCompleted: boolean, taskID: number) => {

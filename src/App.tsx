@@ -10,7 +10,6 @@ import CurrencyConverterPage from './pages/CurrencyConverterPage';
 import ToDoListPage from './pages/ToDoListPage';
 import SignUpPage from './pages/Signup';
 import Login from './pages/Login';
-import ResetPassword from './pages/Reset';
 import { onAuthStateChanged } from "firebase/auth";
 import * as firebaseConfig from "./firebase"
 import classnames from 'classnames'
