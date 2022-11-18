@@ -7,7 +7,7 @@ import styles from "./index.module.scss";
 import { Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
-
+// Setting the constants for all the pages and subpages.
 const sideBarData = [
     {
         pageName: "Home",
@@ -53,8 +53,11 @@ const sideBarData = [
     }
 ]
 const SideBar = () => {
+
+    // setting and getting if any sub menu is opened / closed.
     const [openMenu, setOpenMenu] = useState<{ [key: string]: boolean }>({})
 
+    // Handling the click to open / close sub menu
     const handleClick = (key: string) => () => {
         setOpenMenu({ [key]: !openMenu[key] });
     };

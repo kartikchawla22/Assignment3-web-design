@@ -17,17 +17,23 @@ import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 
 const AppBarHeader = () => {
+    // Handling the mobile view, menu should be shown only after clicking the burger icon in mobile devices.
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    // Handling the user widget.
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    // Drawer for mobile.
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    // Open user widget.
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
+    // Close user widget.
     const handleClose = () => {
         setAnchorEl(null);
     };
+    // Handling the logout using firebase.
     const logout = () => {
         signOut(fireBaseConfig.auth).then(() => {
             handleClose()

@@ -6,6 +6,7 @@ import styles from './index.module.scss';
 
 
 const ToDoListItem = ({ taskID, title, isCompleted = false, onTaskChange = (value: boolean, taskID: number) => { } }: ToDoListItemType) => {
+    // Setting and Getting the value of whether the task is completed or not. 
     const [value, setValue] = useState<boolean>(isCompleted);
     return (
         <div className={styles.toDoListItemContainer}>

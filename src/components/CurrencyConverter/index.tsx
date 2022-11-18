@@ -3,12 +3,19 @@ import styles from './index.module.scss';
 import axios from 'axios';
 
 const CurrencyConverter = () => {
+    // Setting and Getting the Exchange rates from the API
     const [exchangeRateData, setExchangeRateData] = useState<{ [key: string]: any }>({})
+
+    // Setting and Getting result of currency conversion.
     const [result, setResult] = useState<number>(0.0)
+    // Setting and Getting the currency we want to convert FROM
     const [fromCurrency, setFromCurrency] = useState<number>(1.0)
+    // Setting and Getting the currency we want to convert TO
     const [toCurrency, setToCurrency] = useState<number>(1.0)
+    // Setting and Getting the Loader while we fetch the data
     const [isLoading, setIsloading] = useState(false);
 
+    // This hook is fired every time this component loads. We are getting the exchange rate data from API in this hook.
     useEffect(() => {
         setIsloading(true)
         const getExchangeRates = async () => {
@@ -18,6 +25,7 @@ const CurrencyConverter = () => {
         }
         getExchangeRates()
     }, [])
+    // This hook is fired every time user changes the To or FROM currency.
     useEffect(() => {
         if (fromCurrency > 0.0 && toCurrency > 0.0) {
             setResult(fromCurrency / toCurrency)

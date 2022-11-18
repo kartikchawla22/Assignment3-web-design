@@ -4,10 +4,15 @@ import styles from './index.module.scss';
 import axios from 'axios';
 
 const Weather = () => {
+    // Setting and Getting the Weather data from API
     const [weatherData, setWeatherData] = useState<{ [key: string]: any }>({})
+    // Setting and getting the marks for slider.
     const [marks, setMarks] = useState<Array<any>>([])
+    // setting and getting the loader for when we hit the API.
     const [isLoading, setIsloading] = useState(false);
 
+    // This hooks is fired every time this component loads.
+    // We are fetching the user's current location in this hook and using this location we are fetching the weather data using API.
     useEffect(() => {
         setIsloading(true)
         const getLocation = () => {
@@ -22,6 +27,8 @@ const Weather = () => {
             }
         }
 
+
+        // After getting the location we fetch the weather data using the API.
         const getWeatherData = async (position: any) => {
             const { latitude, longitude } = position.coords
             const data = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toFixed(2)}&lon=${longitude.toFixed(2)}&units=metric&appid=7827823101d2b73da072f3788992569f`)
@@ -30,6 +37,7 @@ const Weather = () => {
         getLocation()
     }, [])
 
+    // This hooks is fired everytime the weather data changes, we are setting the value of marks to be used in slider.
     useEffect(() => {
         setIsloading(true)
         if (weatherData) {
@@ -52,6 +60,8 @@ const Weather = () => {
 
     }, [weatherData])
 
+
+    // This function return the formatted temp.
     const valuetext = (value: string | number) => {
         return `${value}°C`;
     }

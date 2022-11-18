@@ -3,9 +3,12 @@ import styles from './index.module.scss';
 import axios from "axios"
 
 const NewsFeed = () => {
+    // This hook is used to set and get the news data.
     const [newsData, setNewsData] = useState<{ [key: string]: any }>({});
+    // This hook is used to set and get loader while we hit the API.
     const [isLoading, setIsloading] = useState(false);
 
+    // This hook is fired every time this component loads. We are getting the News data from API in this hook.
     useEffect(() => {
         (async () => {
             setIsloading(true)
