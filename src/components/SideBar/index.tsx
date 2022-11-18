@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -53,7 +53,7 @@ const sideBarData = [
     }
 ]
 const SideBar = () => {
-    const [openMenu, setOpenMenu] = React.useState<{ [key: string]: boolean }>({})
+    const [openMenu, setOpenMenu] = useState<{ [key: string]: boolean }>({})
 
     const handleClick = (key: string) => () => {
         console.log(key);

@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { Checkbox } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
 import { ToDoListItemType } from '../../utils/types';
 import styles from './index.module.scss';
 

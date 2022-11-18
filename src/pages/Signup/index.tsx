@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { getAuth } from 'firebase/auth'
 import classNames from "classnames";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as firebaseConfig from '../../firebase'
 import styles from "./index.module.scss";
 import { Button, Typography } from "@mui/material";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, updateProfile, getAuth } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 
 const schema = Yup.object().shape({

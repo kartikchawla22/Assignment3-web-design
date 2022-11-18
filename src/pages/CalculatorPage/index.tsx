@@ -1,7 +1,7 @@
-import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import Calculator from '../../components/calculator';
+import Calculator from '../../components/Calculator';
 import styles from './index.module.scss';
+
 const CalculatorPage = () => {
     return (
         <div className={styles.calculatorPageContainer}>
