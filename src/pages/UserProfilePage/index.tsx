@@ -1,19 +1,15 @@
 import styles from "./index.module.scss";
+import * as firebaseConfig from "../../firebase"
 
 const UserProfilePage = () => {
-    return (
+    const user = firebaseConfig.auth.currentUser
+    return user ? (
         <div className={styles.userProfileContianer}>
-            <div className={styles.userProfileContent}>
-                <div className={styles.userData}>
-                    <span>Name:</span>
-                    <span>Kartik</span>
-                </div>
-                <div className={styles.userData}>
-                    <span>Email:</span>
-                    <span>Kartik</span>
-                </div>
+            <div className={styles.card}>
+                <h1>{user.displayName}</h1>
+                <p className={styles.title}>{user.email}</p>
             </div>
         </div>
-    )
+    ) : <></>
 }
 export default UserProfilePage

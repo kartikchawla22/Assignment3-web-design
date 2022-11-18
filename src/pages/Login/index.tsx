@@ -1,80 +1,117 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { getAuth } from 'firebase/auth'
-import InputControl from "../../components/InputControl";
-
-
-import styles from "./index.module.scss";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { Formik } from "formik";
+import * as Yup from "yup";
 import { Button, Typography } from "@mui/material";
+import { FirebaseError } from "firebase/app";
+import classNames from "classnames";
+import styles from "./index.module.scss";
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .required("Email is a required field")
+    .email("Invalid email format"),
+  pass: Yup.string()
+    .required("Password is a required field")
+    .min(5, "Password must be at least 8 characters"),
+});
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-  const [values, setValues] = useState({
-    email: "",
-    pass: "",
-  });
-  const [errorMsg, setErrorMsg] = useState("");
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
-
-  const handleSubmission = () => {
-    if (!values.email || !values.pass) {
-      setErrorMsg("Fill all fields");
-      return;
-    }
-    setErrorMsg("");
-
-    setSubmitButtonDisabled(true);
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, values.email, values.pass)
-      .then(async (res) => {
-        setSubmitButtonDisabled(false);
-      })
-      .catch((err) => {
-        setSubmitButtonDisabled(false);
-        setErrorMsg(err.message);
-      });
-  };
+  const auth = getAuth();
+  const [APIError, setAPIError] = useState<string>("")
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
-        <Typography variant="h4" component="div">
+        <Typography variant="h4" component="div" className={styles.heading}>
           Login
         </Typography>
 
-        <InputControl
-          label="Email"
-          onChange={(event: any) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-          placeholder="Enter email address"
-        />
-        <InputControl
-          label="Password"
-          onChange={(event: any) =>
-            setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-          placeholder="Enter Password"
-        />
+        <Formik
+          validationSchema={schema}
+          initialValues={{ email: "", pass: "" }}
+          onSubmit={(values) => {
+            signInWithEmailAndPassword(auth, values.email, values.pass)
+              .then(async (res) => {
+              })
+              .catch((err: FirebaseError) => {
+                console.log(err.message, err.code);
+                switch (err.code) {
+                  case "auth/wrong-password":
+                    setAPIError("Email OR Password is wrong")
+                    break;
+                  case "auth/user-not-found":
+                    setAPIError("User Not Found")
+                    break;
+                }
+              });
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
+            <div className={styles.login}>
+              <div className={styles.form}>
+                <form noValidate onSubmit={handleSubmit}>
+                  <div className={styles.inputContainer}>
+                    <input
+                      type="email"
+                      name="email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.email}
+                      placeholder="Enter email id"
+                      className={styles.formControl}
+                      id="email"
+                    />
+                    <p className={styles.error}>
+                      {errors.email && touched.email && errors.email}
+                    </p>
+                  </div>
+                  <div className={styles.inputContainer}>
+                    <input
+                      type="password"
+                      name="pass"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.pass}
+                      placeholder="Enter password"
+                      className={styles.formControl}
+                    />
+                    <p className={styles.error}>
+                      {errors.pass && touched.pass && errors.pass}
+                    </p>
+                  </div>
+                  <p className={classNames(styles.error, styles.apiError)}>
+                    {APIError}
+                  </p>
+                  <Button variant="contained" type="submit">Login</Button>
 
-        <div className={styles.footer}>
-          <b className={styles.error}>{errorMsg}</b>
-          <Button variant="contained" disabled={submitButtonDisabled} onClick={handleSubmission}>
-            Login
-          </Button>
-          <p>
-            Create a new account here{" "}
-            <span>
-              <Link to="/signup">Sign up</Link>
-            </span>
-          </p>
-          <p>
-            Forgot Password?{" "}
-            <span>
-              <Link to="/reset">Reset Password</Link>
-            </span>
-          </p>
-        </div>
+                  <div className={styles.footer}>
+                    <p>
+                      Create a new account here{" "}
+                      <span>
+                        <Link to="/signup">Sign up</Link>
+                      </span>
+                    </p>
+                    <p>
+                      Forgot Password?{" "}
+                      <span>
+                        <Link to="/reset">Reset Password</Link>
+                      </span>
+                    </p>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          )}
+        </Formik>
       </div>
     </div>
   );

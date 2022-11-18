@@ -11,7 +11,7 @@ import { ExpandLess, ExpandMore } from '@mui/icons-material';
 const sideBarData = [
     {
         pageName: "Home",
-        pageLink: "/home",
+        pageLink: "/",
         pageOptions: []
     },
     {

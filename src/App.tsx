@@ -47,7 +47,7 @@ function App() {
             </Routes>
           ) : (
             <Routes>
-              <Route path="/home" element={<HomePage />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/users" element={<UserListPage />} />
               <Route path="/profile" element={<UserProfilePage />} />
               <Route path="/tools/calculator" element={<CalculatorPage />} />
@@ -57,7 +57,7 @@ function App() {
               <Route path="/services/currency" element={<CurrencyConverterPage />} />
               <Route
                 path="*"
-                element={<Navigate to="/home" />}
+                element={<Navigate to="/" />}
               />
             </Routes>
           )}

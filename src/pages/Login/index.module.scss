@@ -14,54 +14,46 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    border: 1px solid black;
+    box-shadow: 5px 5px 10px #888888;
 
     @media screen and (max-width: 768px) {
       min-width: unset;
     }
-
   }
 
-  .footer {
+  .heading {
+    text-align: center;
+  }
+
+  .form {
+    text-align: center;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center;
 
-    .error {
-      font-weight: bold;
-      font-size: 0.875rem;
-      color: #ff3300;
-      text-align: center;
-    }
+    .inputContainer {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
 
-    button {
-      outline: none;
-      border: none;
-      color: #fff;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 10px 16px;
-      width: 100%;
-      transition: 100ms;
-      cursor: pointer;
-
-      &:disabled {
-        background-color: gray !important;
+      input {
+        border-radius: 10px;
+        padding: 5px 10px;
+        font-size: 20px;
+        line-height: 1.5rem;
       }
+
     }
 
-    p {
-      font-weight: 700;
-      color: #000;
+    p.error {
+      margin: 0;
+      text-align: left;
+      font-size: 15px;
+      color: red;
 
-      span a {
-        font-weight: bold;
-        letter-spacing: 1px;
-        font-size: 1rem;
-        text-decoration: underline;
-        color: #1876d2;
-
+      &.apiError {
+        margin: 10px 0;
+        text-align: center;
       }
     }
   }
