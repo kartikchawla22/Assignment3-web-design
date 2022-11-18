@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getAuth } from 'firebase/auth'
 import InputControl from "../../components/InputControl";
-import { auth } from "../../firebase";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import * as firebaseConfig from '../../firebase'
 
 import styles from "./index.module.scss";
+import { Button, Typography } from "@mui/material";
 
-const Signup = () => {
+const SignupPage = () => {
+  const db = getFirestore(firebaseConfig.app);
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -30,9 +33,21 @@ const Signup = () => {
       .then(async (res) => {
         setSubmitButtonDisabled(false);
         const user = res.user;
+        console.log(res.user);
+
         await updateProfile(user, {
           displayName: values.name,
         });
+        try {
+          const docRef = await addDoc(collection(db, "Users"), {
+            name: values.name,
+            email: values.email
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+
         setErrorMsg("User Account Created Successfully.");
       })
       .catch((err) => {
@@ -44,7 +59,9 @@ const Signup = () => {
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
-        <h1 className={styles.heading}>Signup</h1>
+        <Typography variant="h4" component="div">
+          Signup
+        </Typography>
 
         <InputControl
           label="Name"
@@ -70,9 +87,9 @@ const Signup = () => {
 
         <div className={styles.footer}>
           <b className={styles.error}>{errorMsg}</b>
-          <button onClick={handleSubmission} disabled={submitButtonDisabled}>
+          <Button variant="contained" disabled={submitButtonDisabled} onClick={handleSubmission}>
             Signup
-          </button>
+          </Button>
           <p>
             Already have an account?{" "}
             <span>
@@ -85,4 +102,4 @@ const Signup = () => {
   );
 }
 
-export default Signup;
+export default SignupPage;

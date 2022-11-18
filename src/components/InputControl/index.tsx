@@ -1,4 +1,3 @@
-import React from "react";
 import { InputControlType } from "../../utils/types";
 
 import styles from "./index.module.scss";

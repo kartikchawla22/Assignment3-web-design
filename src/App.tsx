@@ -11,15 +11,17 @@ import ToDoListPage from './pages/ToDoListPage';
 import SignUpPage from './pages/Signup';
 import Login from './pages/Login';
 import ResetPassword from './pages/Reset';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import * as firebaseConfig from "./firebase"
 import classnames from 'classnames'
+import UserListPage from './pages/UserListPage';
+import UserProfilePage from './pages/UserProfilePage';
 
 
 
 function App() {
   const [isUserSignedIn, setIsUserSignedIn] = React.useState<boolean>(false)
-  const auth = getAuth(firebaseConfig.app);
+  const auth = firebaseConfig.auth
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setIsUserSignedIn(true)
@@ -46,6 +48,8 @@ function App() {
           ) : (
             <Routes>
               <Route path="/home" element={<HomePage />} />
+              <Route path="/users" element={<UserListPage />} />
+              <Route path="/profile" element={<UserProfilePage />} />
               <Route path="/tools/calculator" element={<CalculatorPage />} />
               <Route path="/tools/todolist" element={<ToDoListPage />} />
               <Route path="/services/weather" element={<WeatherPage />} />

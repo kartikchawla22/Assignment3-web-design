@@ -6,8 +6,9 @@ import InputControl from "../../components/InputControl";
 
 
 import styles from "./index.module.scss";
+import { Button, Typography } from "@mui/material";
 
-const Login = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
@@ -28,8 +29,6 @@ const Login = () => {
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
-
-        navigate("/home");
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
@@ -39,7 +38,9 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.innerBox}>
-        <h1 className={styles.heading}>Login</h1>
+        <Typography variant="h4" component="div">
+          Login
+        </Typography>
 
         <InputControl
           label="Email"
@@ -58,9 +59,9 @@ const Login = () => {
 
         <div className={styles.footer}>
           <b className={styles.error}>{errorMsg}</b>
-          <button disabled={submitButtonDisabled} onClick={handleSubmission}>
+          <Button variant="contained" disabled={submitButtonDisabled} onClick={handleSubmission}>
             Login
-          </button>
+          </Button>
           <p>
             Create a new account here{" "}
             <span>
@@ -79,4 +80,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default LoginPage;

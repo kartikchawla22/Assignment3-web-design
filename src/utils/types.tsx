@@ -16,3 +16,7 @@ export type InputControlType = {
     onChange?: (e: any) => void;
     placeholder?: string
 }
+export type UserType = {
+    email: string;
+    name: string;
+}

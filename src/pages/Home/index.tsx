@@ -22,8 +22,8 @@ const HomePage = () => {
   return (
 
     <div className={styles.homePageContainer}>
-      {users.map((user) => {
-        return <UserCards name={user.name} image={user.image} description={user.description} />
+      {users.map((user, index) => {
+        return <UserCards key={index} name={user.name} image={user.image} description={user.description} />
       })}
     </div>
 
