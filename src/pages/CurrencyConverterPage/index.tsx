@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 const CurrencyConverterPage = () => {
     return (
         <div>
-            <Typography variant="h3" noWrap component="div" className={styles.heading}>
+            <Typography variant="h4" component="div" className={styles.heading}>
                 Currency Converter
             </Typography>
             <CurrencyConverter />

@@ -1,0 +1,28 @@
+.userProfileContianer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .userProfileContent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 50%;
+        gap: 30px;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 20px;
+
+        .userData {
+            display: inline-flex;
+            justify-content: space-around;
+            gap: 20px;
+            align-self: center;
+
+            span {
+                // width: 50%;
+            }
+        }
+    }
+}

@@ -12,6 +12,11 @@
         max-width: 50%;
         width: 100%;
 
+        @media only screen and (max-width: 768px) {
+            max-width: 100%
+        }
+
+
         .addTaskBox {
             display: inline-flex;
             justify-content: center;

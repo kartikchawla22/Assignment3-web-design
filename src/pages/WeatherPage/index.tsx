@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 const WeatherPage = () => {
     return (
         <div>
-            <Typography variant="h3" noWrap component="div" className={styles.heading}>
+            <Typography variant="h4" component="div" className={styles.heading}>
                 Weather
             </Typography>
             <Weather />

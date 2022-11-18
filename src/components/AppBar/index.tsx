@@ -10,6 +10,9 @@ import SideBar from '../SideBar'
 import { AccountCircle } from '@mui/icons-material';
 import { Menu, MenuItem } from '@mui/material';
 import styles from './index.module.scss';
+import { signOut } from "firebase/auth";
+import * as fireBaseConfig from "../../firebase"
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -25,7 +28,13 @@ const AppBarHeader = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+    const logout = () => {
+        signOut(fireBaseConfig.auth).then(() => {
+            handleClose()
+        }).catch((error) => {
+            console.log(error)
+        });
+    }
 
     return (
         <Box sx={{ display: 'flex' }} className={styles.appBarContainer}>
@@ -47,7 +56,7 @@ const AppBarHeader = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Kartik + Himanshu
+                        Kartik && Himanshu
                     </Typography>
                     {true && (
                         <div>
@@ -59,7 +68,7 @@ const AppBarHeader = () => {
                                 onClick={handleMenu}
                                 color="inherit"
                             >
-                                <AccountCircle />
+                                <AccountCircle className={styles.userAccount} />
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -76,8 +85,10 @@ const AppBarHeader = () => {
                                 open={Boolean(anchorEl)}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                <MenuItem onClick={handleClose}>
+                                    <Link className={styles.link} to={"/profile"} >Profile</Link>
+                                </MenuItem>
+                                <MenuItem onClick={logout}>Logout</MenuItem>
                             </Menu>
                         </div>
                     )}
