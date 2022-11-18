@@ -4,6 +4,7 @@ import profile1 from '../../Assets/users.jpg';
 import kartik from '../../Assets/kartik.jpg';
 import himanshu from '../../Assets/himanshu.jpeg';
 
+// Constant used for storing the data of creators of this applicaiton.
 const users = [
   {
     name: "Kartik Chawla",

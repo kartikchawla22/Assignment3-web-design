@@ -8,6 +8,9 @@ import { FirebaseError } from "firebase/app";
 import classNames from "classnames";
 import styles from "./index.module.scss";
 
+
+// const Yup Schema that is used for field validations.
+// This schema needs to be passed to Formik for the validations.
 const schema = Yup.object().shape({
   email: Yup.string()
     .required("Email is a required field")
@@ -18,7 +21,9 @@ const schema = Yup.object().shape({
 });
 
 const LoginPage = () => {
+  // Getthing the auth object from firebase.
   const auth = getAuth();
+  // This hook is used to set and get the Error that is recieved from the API.
   const [APIError, setAPIError] = useState<string>("")
   return (
     <div className={styles.container}>

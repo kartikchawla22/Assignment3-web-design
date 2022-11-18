@@ -10,6 +10,8 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, updateProfile, getAuth } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 
+// const Yup Schema that is used for field validations.
+// This schema needs to be passed to Formik for the validations.
 const schema = Yup.object().shape({
   name: Yup.string()
     .required("Name is a required field"),
@@ -23,9 +25,12 @@ const schema = Yup.object().shape({
 
 
 const SignupPage = () => {
+  // Getthing the auth object from firebase.
   const auth = getAuth();
-  const db = getFirestore(firebaseConfig.app);
+  // This hook is used to set and get the Error that is recieved from the API.
   const [APIError, setAPIError] = useState<string>("")
+  // getting the DB object from Firestore.
+  const db = getFirestore(firebaseConfig.app);
 
   return (
     <div className={styles.container}>

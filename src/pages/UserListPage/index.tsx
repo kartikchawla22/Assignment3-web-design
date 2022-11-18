@@ -13,6 +13,8 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import styles from './index.module.scss';
 
+// Interface for the table column settings.
+
 interface Column {
     id: 'name' | 'email';
     label: string;
@@ -23,10 +25,17 @@ interface Column {
 
 
 const UserListPage = () => {
+    // Getting the Db object from firestore.
     const db = getFirestore(firebaseConfig.app);
+    // Setting and getting the rows that needs to be shown in the table.
     const [rows, setRows] = useState<Array<UserType>>([])
+    // Setting and getting the current page number for pagination.
     const [page, setPage] = useState<number>(0);
+    // Setting and getting the max number of rows that needs to be shown on 1 page.
     const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+
+    // This hook is fired everytime this page loads.
+    // We are getting the list of all the users from firestore.
     useEffect(() => {
         const getUsers = async () => {
             let data: Array<UserType> = []
@@ -39,15 +48,20 @@ const UserListPage = () => {
         getUsers()
     }, [])
 
+
+    // Defining the columns that we need to show in the table.
     const columns: readonly Column[] = [
         { id: 'name', label: 'Name', minWidth: 170 },
         { id: 'email', label: 'Email', minWidth: 100 }
     ];
 
+
+    // Handling page change using pagination.
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
     };
 
+    // Handling the change in max number of rows.
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
