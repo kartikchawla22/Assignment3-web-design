@@ -103,12 +103,6 @@ const LoginPage = () => {
                         <Link to="/signup">Sign up</Link>
                       </span>
                     </p>
-                    <p>
-                      Forgot Password?{" "}
-                      <span>
-                        <Link to="/reset">Reset Password</Link>
-                      </span>
-                    </p>
                   </div>
                 </form>
 
