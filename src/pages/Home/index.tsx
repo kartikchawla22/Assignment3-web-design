@@ -1,6 +1,5 @@
 import UserCards from '../../components/UserCards';
-import styles from './index.module.scss'
-import profile1 from '../../Assets/users.jpg';
+import styles from './index.module.scss';
 import kartik from '../../Assets/kartik.jpg';
 import himanshu from '../../Assets/himanshu.jpeg';
 
