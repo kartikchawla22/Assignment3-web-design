@@ -5,8 +5,8 @@ import styles from './index.module.scss';
 const NewsFeedPage = () => {
     return (
         <div>
-            <Typography variant="h6" noWrap component="div" className={styles.heading}>
-                This is News Feed
+            <Typography variant="h4" component="div" className={styles.heading}>
+                Latest News Feed
             </Typography>
             <NewsFeed />
         </div>

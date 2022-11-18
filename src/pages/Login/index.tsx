@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {getAuth}  from 'firebase/auth'
-import InputControl from "../InputControl/InputControl";
+import { getAuth } from 'firebase/auth'
+import InputControl from "../../components/InputControl";
 
 
-import styles from "./Login.module.css";
+import styles from "./index.module.scss";
 
-function Login() {
+const Login = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
@@ -28,7 +28,7 @@ function Login() {
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
-        
+
         navigate("/home");
       })
       .catch((err) => {
@@ -43,14 +43,14 @@ function Login() {
 
         <InputControl
           label="Email"
-          onChange={(event) =>
+          onChange={(event: any) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
           placeholder="Enter email address"
         />
         <InputControl
           label="Password"
-          onChange={(event) =>
+          onChange={(event: any) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
           placeholder="Enter Password"

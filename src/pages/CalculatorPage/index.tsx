@@ -4,8 +4,8 @@ import Calculator from '../../components/calculator';
 import styles from './index.module.scss';
 const CalculatorPage = () => {
     return (
-        <div>
-            <Typography variant="h3" noWrap component="div" className={styles.heading}>
+        <div className={styles.calculatorPageContainer}>
+            <Typography variant="h4" component="div" className={styles.heading}>
                 Calculator
             </Typography>
             <Calculator />

@@ -1,14 +1,26 @@
-.mainContent {
-    margin-left: 240px;
-    max-width: calc(100% - 280px);
-    margin-top: 64px;
-    padding: 20px;
+.content {
     width: 100%;
+    display: flex;
+    justify-content: center;
 
-    @media screen and (max-width: 768px) {
-        margin-left: 0;
-        width: calc(100% - 20px);
-        margin-top: 56px;
+    .mainContent {
+        max-width: calc(100% - 280px);
+        margin-top: 64px;
+        padding: 20px;
+        width: 100%;
 
+        &.notLoggedInScreens {
+            margin-left: 0;
+            max-width: 100%;
+            margin-top: 0;
+            padding: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            margin-left: 0;
+            width: 100%;
+            max-width: 100%;
+            margin-top: 56px;
+        }
     }
 }

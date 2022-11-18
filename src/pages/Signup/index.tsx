@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {getAuth}  from 'firebase/auth'
-import InputControl from "../InputControl/InputControl";
-import { auth } from "../../components/firebase";
+import { getAuth } from 'firebase/auth'
+import InputControl from "../../components/InputControl";
+import { auth } from "../../firebase";
 
-import styles from "./Signup.module.css";
+import styles from "./index.module.scss";
 
-function Signup() {
-  const navigate = useNavigate();
+const Signup = () => {
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -18,7 +17,7 @@ function Signup() {
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
   const handleSubmission = () => {
-   
+
     if (!values.name || !values.email || !values.pass) {
       setErrorMsg("Fill all fields");
       return;
@@ -50,21 +49,21 @@ function Signup() {
         <InputControl
           label="Name"
           placeholder="Enter your name"
-          onChange={(event) =>
+          onChange={(event: any) =>
             setValues((prev) => ({ ...prev, name: event.target.value }))
           }
         />
         <InputControl
           label="Email"
           placeholder="Enter email address"
-          onChange={(event) =>
+          onChange={(event: any) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
         />
         <InputControl
           label="Password"
           placeholder="Enter password"
-          onChange={(event) =>
+          onChange={(event: any) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
         />

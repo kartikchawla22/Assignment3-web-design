@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {getAuth,sendPasswordResetEmail}  from 'firebase/auth'
-import InputControl from "../InputControl/InputControl";
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
+import InputControl from "../../components/InputControl";
 
 
-import styles from "./Reset.module.css";
+import styles from "./index.module.scss";
 
 function Reset() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ function Reset() {
     sendPasswordResetEmail(auth, values.email)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
-        
+
         setErrorMsg("Password reset email Sent.");
       })
       .catch((err) => {
@@ -41,7 +41,7 @@ function Reset() {
 
         <InputControl
           label="Email"
-          onChange={(event) =>
+          onChange={(event: any) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
           placeholder="Enter email address"
@@ -52,13 +52,13 @@ function Reset() {
             Reset Password
           </button>
           <p>
-          Create a new account here{" "}
+            Create a new account here{" "}
             <span>
               <Link to="/signup">Sign up</Link>
             </span>
           </p>
           <p>
-          Login here{" "}
+            Login here{" "}
             <span>
               <Link to="/signup">Login</Link>
             </span>
