@@ -8,6 +8,10 @@ import WeatherPage from './pages/WeatherPage';
 import NewsFeedPage from './pages/NewsFeedPage';
 import CurrencyConverterPage from './pages/CurrencyConverterPage';
 import ToDoListPage from './pages/ToDoListPage';
+import SignUpPage from './pages/Signup/Signup';
+import Login from './pages/Login/Login';
+import ResetPassword from './pages/Reset/Reset';
+
 
 function App() {
   return (
