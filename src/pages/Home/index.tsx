@@ -1,19 +1,19 @@
-import * as React from 'react';
-import AppBarHeader from '../../components/AppBar';
 import UserCards from '../../components/UserCards';
 import styles from './index.module.scss'
 import profile1 from '../../Assets/users.jpg';
+import kartik from '../../Assets/kartik.jpg';
+import himanshu from '../../Assets/himanshu.jpeg';
 
 const users = [
   {
     name: "Kartik Chawla",
-    description: "Software Developer",
-    image: profile1
+    description: "Meticulous Software Engineer with 6 years of experience designing, testing, and developing software solutions. In depth understanding of web technologies with focus on delivering innovative business solutions. Excels in fast-paced, high-energy, and deadline-driven environment with willingness to take on additional tasks.",
+    image: kartik
   },
   {
     name: "Himanshu",
-    description: "Software Developer",
-    image: profile1
+    description: "An experienced Salesforce enthusiast having 3+ years of experience working as a Salesforce developer for US-Based Client 'Eli-Lilly' and Company.",
+    image: himanshu
   }
 ]
 
