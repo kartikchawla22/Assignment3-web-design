@@ -15,6 +15,11 @@ const sideBarData = [
         pageOptions: []
     },
     {
+        pageName: "User List",
+        pageLink: "/users",
+        pageOptions: []
+    },
+    {
         pageName: "Tools",
         pageLink: "/tools",
         pageOptions: [

@@ -5,7 +5,7 @@ import { ToDoListItemType } from '../../utils/types';
 import styles from './index.module.scss';
 
 
-const ToDoListItem = ({ title, isCompleted = false }: ToDoListItemType) => {
+const ToDoListItem = ({ taskID, title, isCompleted = false, onTaskChange = (value: boolean, taskID: number) => { } }: ToDoListItemType) => {
     const [value, setValue] = useState<boolean>(isCompleted);
     return (
         <div className={styles.toDoListItemContainer}>
@@ -13,7 +13,10 @@ const ToDoListItem = ({ title, isCompleted = false }: ToDoListItemType) => {
                 <Typography variant="h6" component="div" className={styles.heading}>
                     {title}
                 </Typography>
-                <Checkbox checked={value} onChange={(e) => setValue(Boolean(e.target.checked))} />
+                <Checkbox checked={value} onChange={(e) => {
+                    setValue(Boolean(e.target.checked))
+                    onTaskChange(Boolean(e.target.checked), taskID)
+                }} />
             </div>
         </div>
     )

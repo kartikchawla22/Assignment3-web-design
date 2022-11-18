@@ -1,5 +1,7 @@
 
 export type ToDoListItemType = {
-    isCompleted?: boolean,
-    title: string
+    taskID: number;
+    isCompleted?: boolean;
+    title?: string;
+    onTaskChange?: (key: boolean, id: number) => void;
 }
